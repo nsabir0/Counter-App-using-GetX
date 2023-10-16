@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../Controller/count_logic.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -11,6 +13,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  //final Controller _xController = Get.put(Controller());
+
   int _counter = 0;
   String _text = 'TEXT Counter';
   final List<String> _list = ['Bangla', 'Hindi'];
@@ -19,9 +23,9 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter++;
 
-      _text = _counter.toString();
+      _text = 'TEXT Counter= ${_counter.toString()}';
 
-      _list.add(_counter.toString());
+      _list.add('TEXT Counter= ${_counter.toString()}');
     });
   }
 
@@ -56,5 +60,15 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class HomePage extends StatelessWidget {
+   const HomePage({super.key});
+  //final Controller _xController = Get.put(Controller());
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
