@@ -1,3 +1,4 @@
+import 'package:counter_app/Pages/homepage_getx.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Pages/home_page.dart';
@@ -14,14 +15,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(title: 'Flutter Counter Page'),
+      home: Home(),
     );
   }
 }
-
-
