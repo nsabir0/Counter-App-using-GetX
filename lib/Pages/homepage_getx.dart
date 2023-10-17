@@ -1,13 +1,16 @@
+import 'dart:io';
+
 import 'package:counter_app/Controller/count_logic.dart';
+import 'package:counter_app/Controller/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(context) {
     //Initializing logic class to make it available for all "child" routes======
     final Controller c = Get.put(Controller());
+    final ImagePickController imageController = Get.put(ImagePickController());
 
     return Scaffold(
         appBar: AppBar(
@@ -59,6 +62,7 @@ class Home extends StatelessWidget {
 class Other extends StatelessWidget {
   // You can ask Get to find a Controller that is being used by another page and redirect you to it.
   final Controller c = Get.find();
+  final ImagePickController imageController = Get.find();
 
   @override
   Widget build(context) {
@@ -79,6 +83,21 @@ class Other extends StatelessWidget {
             ElevatedButton(
               child: const Text("Go Back"),
               onPressed: () => Get.to(Home()),
+            ),
+            const SizedBox(height: 20),
+            Obx(
+              () => CircleAvatar(
+                radius: 40,
+                backgroundImage: imageController.imagePath.isNotEmpty
+                    ? FileImage(File(imageController.imagePath.toString()))
+                    : null,
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                imageController.getImage();
+              },
+              child: const Text('Pick Image'),
             ),
           ],
         )));
