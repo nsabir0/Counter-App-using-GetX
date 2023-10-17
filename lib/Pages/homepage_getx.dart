@@ -93,11 +93,32 @@ class Other extends StatelessWidget {
                     : null,
               ),
             ),
-            TextButton(
-              onPressed: () {
-                imageController.getImage();
-              },
-              child: const Text('Pick Image'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  style: TextButton.styleFrom(
+                    side: const BorderSide(
+                      color: Color.fromARGB(255, 179, 157, 219),
+                    ),
+                  ),
+                  onPressed: () {
+                    imageController.getImage();
+                  },
+                  child: const Text('Capture Image'),
+                ),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    side: const BorderSide(
+                      color: Color.fromARGB(255, 179, 157, 219),
+                    ),
+                  ),
+                  onPressed: () {
+                    imageController.getImage();
+                  },
+                  child: const Text('Pick Image'),
+                ),
+              ],
             ),
           ],
         )));
