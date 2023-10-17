@@ -1,6 +1,7 @@
 import 'package:counter_app/Controller/count_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -76,7 +77,9 @@ class Other extends StatelessWidget {
           children: [
             Text("You Clicked ${c.count} Times..."),
             ElevatedButton(
-                child: const Text("Go Back"), onPressed: () => Get.to(Home()))
+              child: const Text("Go Back"),
+              onPressed: () => Get.to(Home()),
+            ),
           ],
         )));
   }
