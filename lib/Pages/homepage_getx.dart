@@ -10,9 +10,10 @@ class Home extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-            title: const Text("GetX Counter App"),
-            centerTitle: true,
-            backgroundColor: Colors.deepPurple[200]),
+          title: const Text("GetX Counter App"),
+          centerTitle: true,
+          backgroundColor: Colors.deepPurple[200],
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -20,9 +21,30 @@ class Home extends StatelessWidget {
             children: [
               //Updating only below widget using getx==========================
               Obx(() => Text("Clicks: ${c.count}")),
+
+              const SizedBox(height: 20),
+
               ElevatedButton(
-                  child: const Text("Go to Other"),
-                  onPressed: () => Get.to(Other())),
+                child: const Text("Go to Other"),
+                onPressed: () => Get.to(Other()),
+              ),
+
+              const SizedBox(height: 20),
+
+              Obx(
+                () => Container(
+                  height: Get.height * .2,
+                  width: Get.width * .3,
+                  color: Colors.deepPurple.withOpacity(c.opacity.value),
+                ),
+              ),
+              Obx(
+                () => Slider(
+                    value: c.opacity.value,
+                    onChanged: (value) {
+                      c.opacity.value = value;
+                    }),
+              )
             ],
           ),
         ),
@@ -41,16 +63,21 @@ class Other extends StatelessWidget {
   Widget build(context) {
     // Other Page Desig==================================
     return Scaffold(
+        appBar: AppBar(
+          title: const Text("GetX Counter App"),
+          centerTitle: true,
+          backgroundColor: Colors.deepPurple[200],
+        ),
         body: Center(
 
             // Access the updated count variable=================================
             child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("You Clicked ${c.count} Times..."),
-        ElevatedButton(
-            child: const Text("Go Back"), onPressed: () => Get.to(Home()))
-      ],
-    )));
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("You Clicked ${c.count} Times..."),
+            ElevatedButton(
+                child: const Text("Go Back"), onPressed: () => Get.to(Home()))
+          ],
+        )));
   }
 }
