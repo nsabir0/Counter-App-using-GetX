@@ -5,17 +5,27 @@ import 'package:get/get.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(context) {
-    // Instantiate your class using Get.put() to make it available for all "child" routes there.
+    //Initializing logic class to make it available for all "child" routes======
     final Controller c = Get.put(Controller());
 
     return Scaffold(
-        // Use Obx(()=> to update Text() whenever count is changed.
-        appBar: AppBar(title: Obx(() => Text("Clicks: ${c.count}"))),
-
-        // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
+        appBar: AppBar(
+            title: const Text("GetX Counter App"),
+            centerTitle: true,
+            backgroundColor: Colors.deepPurple[200]),
         body: Center(
-            child: ElevatedButton(
-                child: Text("Go to Other"), onPressed: () => Get.to(Other()))),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              //Updating only below widget using getx==========================
+              Obx(() => Text("Clicks: ${c.count}")),
+              ElevatedButton(
+                  child: const Text("Go to Other"),
+                  onPressed: () => Get.to(Other())),
+            ],
+          ),
+        ),
 
         //Floating Add button===================================================
         floatingActionButton: FloatingActionButton(
